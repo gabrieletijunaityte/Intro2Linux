@@ -43,9 +43,9 @@ There are two ways to interact with your operating system: a graphical user inte
 > **Question 1**: What are the advantages of using CLI? Can you think of some examples?
 ```
 
-Most Linux distributions come with a *terminal*, which is a program you use to run CLI programs. You might know the *Command Prompt* program on Windows: that is a type of *terminal*. On Linux, there is a variety of terminal applications to choose from. You can start one on your virtual machine by clicking on *Applications* → *System Tools* → *Terminal*. This will look like:
+Most Linux distributions come with a *terminal*, which is a program you use to run CLI programs. You might know the *Command Prompt* program on Windows: that is a type of *terminal*. On Linux, there is a variety of terminal applications to choose from. You can start one on your virtual machine by clicking on *Show Apps* → *Terminal*. This will look like:
 
-![terminal](figs/terminal-vdi.png)
+![terminal](figs/terminal.png)
 
 A *terminal* is just a gateway to the world of CLIs, but through it you interact with a particular *shell* (or *command interpreter*) which speaks a programming language. The default shell on Linux is *Bash*, and programs written in the *Bash* language are called *Bash scripts*. Much like the *R* console, you can input commands to *Bash* line by line through the *terminal*.
 
@@ -103,13 +103,13 @@ There are also some shortcuts available. If you type only `cd`, without the path
 
 Try it out yourself. Navigate to a different directory using `cd`, and when there, type `pwd` to see if everything worked as it is supposed to. Once you're done, you should have something like this displayed in your terminal:
 
-![cdpwd](figs/cd_pwd-vdi.png)
+![cdpwd](figs/cd_pwd.png)
 
-In the example above (`cd M`), we used what is called a *relative path*. It is a path relative to your current working directory (`pwd` states that it is */home/WUR/username*), whereas typing in `cd /home/WUR/username/M` would be using an *absolute path*. An absolute path is like giving geographic coordinates (e.g. 10°N 5°E), whereas a relative path is like giving directions: "10 km to the north and 5 km to the east from where you are standing". On Linux, absolute paths always start with */*, and relative paths never start with */*.
+In the example above (`cd Downloads/`), we used what is called a *relative path*. It is a path relative to your current working directory (`pwd` states that it is */home/osboxes*), whereas typing in `cd /home/osboxes/Downloads` would be using an *absolute path*. An absolute path is like giving geographic coordinates (e.g. 10°N 5°E), whereas a relative path is like giving directions: "10 km to the north and 5 km to the east from where you are standing". On Linux, absolute paths always start with */*, and relative paths never start with */*.
 
-In terms of scripting, you should *almost never use absolute paths*! This is because absolute paths are for the most part unportable: just because you have a directory called */home/WUR/username/M* does not mean that someone else who runs the code, or indeed you yourself on another computer, would have a directory with that name. Especially if it includes your username! Relative paths are more useful: your script could create a directory called *M* and not have to worry about which user it belongs to. It will be created relative to the working directory, as shown by `pwd`.
+In terms of scripting, you should *almost never use absolute paths*! This is because absolute paths are for the most part unportable: just because you have a directory called */home/osboxes/Downloads* does not mean that someone else who runs the code, or indeed you yourself on another computer, would have a directory with that name. Especially if it includes your username! Relative paths are more useful: your script could create a directory called *Downloads* and not have to worry about which user it belongs to. It will be created relative to the working directory, as shown by `pwd`.
 
-Lastly, there are two special "directories" that are present in every directory: `.` and `..`. `.` refers to the directory itself, i.e. *M/.* as well as *M/./.* and *./M* is all the same as *M*. `..` refers to the parent directory: *M/..* is the same as your working directory, as it instructs Bash to look into the directory *M* and then go back out of it again.
+Lastly, there are two special "directories" that are present in every directory: `.` and `..`. `.` refers to the directory itself, i.e. *Downloads/.* as well as *Downloads/./.* and *./Downloads* is all the same as *Downloads*. `..` refers to the parent directory: *Downloads/..* is the same as your working directory, as it instructs Bash to look into the directory *Downloads* and then go back out of it again.
 
 ## Command options
 
@@ -169,7 +169,7 @@ Next option for `ls` is `ls -la ..` - this will list all of the files, as in a u
 
 How do you control `less`? Easy, with your keyboard!
 
-`less` will display only one page of your text at a time. You can move line by line with the arrow keys. To go forward an entire page, you can press **Page Up**. To go *back* one page, you can use **Page Down**. **>** will take you to the end of the text file, while **<** will take you to the beginning of the text. `/characters` will search for `characters` inside the text (for example, if you write `/suse`, it will search for occurances of `suse` inside your text and mark them). **n** will go to the *next* occurrence of the search term, and **h** will display all your options (h as in help!). You quit less with the letter **q**.
+`less` will display only one page of your text at a time. You can move line by line with the arrow keys. To go forward an entire page, you can press **Page Up**. To go *back* one page, you can use **Page Down**. **>** will take you to the end of the text file, while **<** will take you to the beginning of the text. `/characters` will search for `characters` inside the text (for example, if you write `/ubuntu`, it will search for occurrences of `ubuntu` inside your text and mark them). **n** will go to the *next* occurrence of the search term, and **h** will display all your options (h as in help!). You quit less with the letter **q**.
 
 The name `less` is a pun on the word `more`, which is a much more basic tool for displaying a text file and scrolling, because it only allows scrolling down; therefore, *`less` is more than `more`*.
 
@@ -179,7 +179,7 @@ The `file` command will show what kind of file is that you’re looking for, be 
 file /etc/os-release
 ```
 
-There you go, now you know what `os-release` is. Incidentally, it may be either an ASCII file or a link to one! It depends on your Linux distribution (version). If it's a link, try to run the command on the linked file. Now try it out with something else, and see the output.
+There you go, now you know what `os-release` is. Incidentally, it may be either an ASCII text file or a link to one! It depends on your Linux distribution (version). If it's a link, try to run the command on the linked file. Now try it out with something else, and see the output.
 
 Next, we have the commands `type` and `which`. Like `file`, they give information on the type, but they operate on commands instead of files. `which` tells you where you can find the executable that is run if you type in a command. Let's try it on the command `file`:
 
@@ -389,7 +389,7 @@ Ubuntu uses *Aptitude* as the package manager. Here is a short list of the most 
 - `sudo apt remove packagename`: Uninstall a package.
 - See `man apt` for more.
 
-For instance, if you run `apt list chrom*`, one of the results will be `chromium-browser`. It's [Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)), the open-source version of Google Chrome. You can install it by running `sudo apt install chromium-browser`. Similarly, the Ubuntu package repository contains a lot (but not all) of R packages (they are prefixed with `r-cran-`) and Python packages (prefixed with `python3-`; the ones prefixed with `python-` are for Python 2 which we will not be using this year). If there is a package available in the distribution repository, almost always it is better to use that instead of using a package manager built into the language (`install.packages` in R and `easyinstall`/`pip`/`conda` in Python).
+For instance, if you run `apt list chrom*`, one of the results will be `chromium-browser`. It's [Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)), the open-source version of Google Chrome. You can install it by running `sudo apt install chromium-browser`. Similarly, the Ubuntu package repository contains a lot (but not all) of R packages (they are prefixed with `r-cran-`) and Python packages (prefixed with `python3-`; the ones prefixed with `python-` are for Python 2 which is deprecated). If there is a package available in the distribution repository, almost always it is better to use that instead of using a package manager built into the language (`install.packages` in R and `easyinstall`/`pip`/`conda` in Python).
 
 The aforementioned commands are specific to the Debian family of Linux distribution (of whom Ubuntu is a member). In other distributions, package manager syntax is different, but the result is the same. For instance, in openSUSE the equivalent commands would be `zypper search`, `sudo zypper install` and `sudo zypper remove`.
 
@@ -409,8 +409,8 @@ q()
 
 Starting and stopping *Python* from the terminal:
 
-```{r, eval=FALSE, engine='bash'}
-python
+```{bash, eval=FALSE}
+python3
 exit()
 ```
 
@@ -440,7 +440,9 @@ To find out where your `bash` interpreter is located type the following in the t
 type bash
 ```
 
-Second, to run a bash script you first have to have the correct file permissions. We do this with `chmod` (change mode) command in terminal as follows:
+Second, to run a bash script, you have two options.
+The first is have to set the correct file permissions.
+We do this with `chmod` (change mode) command in terminal as follows, this needs to be done only once per file:
 
 ```{bash, eval=FALSE}
 chmod u+x Bash/HelloWorld.sh  # Gives your user execute permissions
@@ -448,6 +450,19 @@ chmod u+x Bash/HelloWorld.sh  # Gives your user execute permissions
 
 ```{block, type="alert alert-info"}
 **Optional**: [More info about `chmod`](https://help.ubuntu.com/community/FilePermissions) for your future reference. Note: today is just an introduction to let you know what is possible so that you can find your way easier in the future.
+```
+
+In this case, we can then proceed to run the script directly:
+
+```{bash, eval=FALSE}
+./HelloWorld.sh
+```
+
+Alternatively, we can specify which interpreter to use specifically, and then pass the file name to the interpreter.
+This option does not require changing file permissions:
+
+```{bash, eval=FALSE}
+bash HelloWorld.sh
 ```
 
 Below is a summary of what we have done in the terminal:
@@ -468,7 +483,7 @@ Hopefully you should have seen it print `Hello, World` onto your screen. If so w
 ![BashScript](figs/Scripting-vdi.jpg)
 
 ```{block, type="alert alert-success"}
-> **Question 4**: Why do we add `./` in front of the Bash script?
+> **Question 4**: In the first option above, why do we add `./` in front of the Bash script name? What happens if you don't? Why?
 ```
 
 ```{block, type="alert alert-info"}
