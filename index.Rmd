@@ -28,7 +28,6 @@ code[class^="sourceCode bash"]::before { content: "Bash Source"; }
 
 # Linux terminal & Bash
 
-
 ## Learning objectives
 
 - Knowing how to use the *terminal*
@@ -160,7 +159,7 @@ So for example, if we have a file which in long format displays: `-rw-r--r--`, i
 Next option for `ls` is `ls -la ..` - this will list all of the files, as in a usual command, hidden files are not shown. It will list all files in the parent of the working directory in long format.
 
 ```{block, type="alert alert-success"}
-> **Question 3**: What is the difference between `ls -l`, `ls -lh` and `ls -lh \-\-si`?
+> **Question 3**: What is the difference between `ls -l`, `ls -lh` and `ls -lh \-\-si`? *Hint: you can run `man ls` to inspect the meaning of different options* 
 ```
 
 ## Getting information about files
@@ -591,7 +590,7 @@ rm input.tif
 
 ```
 
-Let's now check if the range of the NDVI values makes sense, and make a nice script:
+Let's now check if the range of the NDVI values makes sense, and make a nice script in a separate file (this will work only if you have one .tif file in the data directory):
 
 ```{r, engine='bash', results='hide', eval=FALSE}
 #!/bin/bash
