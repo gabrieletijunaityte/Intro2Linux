@@ -590,7 +590,7 @@ rm input.tif
 
 ```
 
-Let's now check if the range of the NDVI values makes sense, and make a nice script in a separate file (this will work only if you have one .tif file in the data directory):
+Let's now check if the range of the NDVI values makes sense, and make a nice script in a separate file (this will work only if you have one .TIF file in the data directory):
 
 ```{r, engine='bash', results='hide', eval=FALSE}
 #!/bin/bash
