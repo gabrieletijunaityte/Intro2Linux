@@ -601,7 +601,7 @@ Let's now check if the range of the NDVI values makes sense, and make a nice scr
 echo "teamname"
 echo "Current date"
 echo "Calculate LandSat NDVI"
-mkdir output
+mkdir -p output
 fn=data/*.tif
 echo "The input file(s): $fn"
 outfn=output/ndvi.tif
